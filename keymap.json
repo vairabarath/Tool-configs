@@ -1,0 +1,99 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // Pane navigation using workspace actions
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+
+      // File operations
+      "space space": "file_finder::Toggle",
+      "shift-l": "pane::ActivateNextItem",
+      "shift-h": "pane::ActivatePreviousItem",
+      "space w": "pane::CloseActiveItem",
+      "space W": "pane::CloseAllItems",
+
+      // Splitting
+      "space s v": "pane::SplitVertical",
+      "space s h": "pane::SplitHorizontal",
+
+      // Formatting
+      "space f f": "editor::Format",
+
+      // Coding
+      "space r n": "editor::Rename",
+      "shift-space": "editor::Hover",
+      "; e": "diagnostics::Deploy",
+      "g r": "editor::FindAllReferences",
+      "space c s": "editor::ConvertToSnakeCase",
+      "space u": "editor::ConvertToOppositeCase",
+      "space c k": "editor::ConvertToKebabCase",
+      "space c S": "editor::ConvertToSentenceCase",
+      "space c c": "editor::ConvertToUpperCamelCase",
+
+      // Explorer navigation
+      "space e": "workspace::ToggleRightDock", // Toggle left panel (explorer)
+      "ctrl-e": "project_panel::ToggleFocus", // Toggle focus to project panel
+      "space n": "workspace::ToggleLeftDock" // Alternative toggle
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      // When focused on the project panel (explorer)
+      "ctrl-h": "workspace::ActivatePaneLeft", // Move to editor
+      "space e": "workspace::ToggleRightDock", // Toggle left panel (explorer)
+
+      // File operations in explorer
+      "enter": "project_panel::Open",
+
+      // Navigation within explorer
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "h": "project_panel::CollapseSelectedEntry",
+      "l": "project_panel::ExpandSelectedEntry",
+
+      // File management
+      "alt-a": "project_panel::NewFile",
+      "alt-d": "project_panel::Delete",
+      "alt-r": "project_panel::Rename",
+      "alt-y": "project_panel::Copy",
+      "alt-x": "project_panel::Cut",
+      "alt-p": "project_panel::Paste"
+    }
+  },
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      // Additional normal mode bindings
+      // "shift-y": ["workspace::SendKeystrokes", "y $"] // Use neovim's yank behavior
+      "shift-k": "editor::MoveLineUp",
+      "shift-j": "editor::MoveLineDown"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore" // In insert mode, make jk escape to normal mode
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Bindings that work when no editor exists
+      "space space": "file_finder::Toggle",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "space e": "workspace::ToggleRightDock",
+      "ctrl-e": "project_panel::ToggleFocus"
+    }
+  }
+]
